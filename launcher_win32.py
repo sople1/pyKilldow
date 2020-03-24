@@ -14,10 +14,23 @@ import pywintypes
 
 
 def run(app: object) -> object:
+    """
+    shotcut for function
+
+    :param app:
+    :return: None
+    """
     return run_win32(app)
 
 
 def run_win32(app: object) -> object:
+    """
+    set window to no having focus for this window.
+    if this window get focus, cannot use WM_QUIT to target foreground window
+
+    :param app:
+    :return: None
+    """
     app.lift()
 
     app.h_wnd = pywintypes.HANDLE(int(app.frame(), 16))
