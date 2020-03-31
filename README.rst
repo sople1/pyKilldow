@@ -27,7 +27,7 @@ Windows
 
 1. Check if you installed Python 3.7.4 or upper
 2. Clone this git repository and open it Command Prompt
-4. If you want to make virtualenv, follow below command:
+3. If you want to make virtualenv, follow below command:
 
 .. code-block:: bash
 
@@ -37,13 +37,13 @@ Windows
     # run
     > env\Scripts\activate
 
-5. install pip packages in requirements.txt
+4. install pip packages in requirements.txt
 
 .. code-block:: bash
 
     > pip install -r requirements.txt
 
-6. Launch by main.py
+5. Launch by main.py
 
 .. code-block:: bash
 
