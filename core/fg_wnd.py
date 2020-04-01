@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 """
-fg_wind.py
+fg_wnd.py
 
 use win32 api
 
@@ -20,7 +20,7 @@ it necessary for GetWindowThreadProcessId
 user32 = ctypes.WinDLL('user32', use_last_error=True)
 
 
-class FgWind:
+class FgWnd:
     """
     for foreground window
     having h_wnd, pid
@@ -33,26 +33,25 @@ class FgWind:
         self.h_wnd = user32.GetForegroundWindow()
         self.pid = user32.GetWindowThreadProcessId(self.h_wnd, None)
 
+    def __str(self):
+        return f"hWind: {self.h_wnd}, pid: {self.pid}"
 
-def close_fg():
-    """
-    Post WM_CLOSE message to foreground window
+    def close(self):
+        """
+        Post WM_CLOSE message to foreground window
 
-    :return: None
-    """
-    fg = FgWind()
-    win32gui.PostMessage(fg.h_wnd, win32con.WM_CLOSE, 0, 0)
+        :return: None
+        """
+        win32gui.PostMessage(self.h_wnd, win32con.WM_CLOSE, 0, 0)
 
+    def kill(self):
+        """
+        Post WM_DESTROY message to foreground window
+        (but it not work for close process?)
 
-def kill_fg():
-    """
-    Post WM_DESTROY message to foreground window
-    (but it not work for close process?)
-
-    :return: None
-    """
-    fg = FgWind()
-    win32gui.PostMessage(fg.h_wnd, win32con.WM_DESTROY, 0, 0)
+        :return: None
+        """
+        win32gui.PostMessage(self.h_wnd, win32con.WM_DESTROY, 0, 0)
 
 
 if __name__ == '__main__':
